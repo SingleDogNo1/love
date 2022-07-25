@@ -1,8 +1,8 @@
 @import '_variables';
 
-/**
- * reset global
- */
+$blur: 20px;
+$image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/jess-harding-lqT6NAmTaiY-unsplash.jpg';
+
 html,
 body {
   margin: 0;
@@ -31,95 +31,10 @@ body {
   min-height: 100vh;
   color: #333;
   font-family: $font-content;
-}
-
-/**
- * header
- */
-header {
-  padding: 1em 0;
-
-  background: #333;
-  color: #f1f1f1;
-
-  .container {
-    font-family: $font-blog-title;
-    border-bottom: 0.3em solid #333;
-
-    .title {
-      color: #eee;
-      text-decoration: none;
-      font-size: 2.4em;
-    }
-    .subtitle {
-      color: #aaa;
-      font-size: 1.4em;
-      margin-left: 1.2em;
-    }
-  }
-}
-
-/* navigation bar */
-nav {
-  top: 0;
-  position: sticky;
-  background: #333;
-  font-family: $font-mono;
-  font-size: 1em;
-  z-index: 10;
-}
-
-#nav {
-  text-align: right;
-
-  a {
-    &,
-    &:visited {
-      text-decoration: none;
-      color: #f1f1f1;
-    }
-
-    padding: 0.625em 1.25em;
-    display: inline-block;
-    position: relative;
-
-    // decoration
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      right: -3px;
-      top: 19px;
-      height: 6px;
-      width: 6px;
-      background: white;
-      opacity: 0.5;
-    }
-
-    // for hover style
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 3px;
-      width: 0;
-      background: $color-underscore;
-      transition: width 0.25s;
-    }
-
-    &.active,
-    &:hover {
-      &::before {
-        width: 100%;
-      }
-    }
-
-    &:last-child::after {
-      display: none;
-    }
-  }
+  background-image: url($image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* menu button on small screen */
@@ -135,12 +50,17 @@ nav {
   display: none; // large display, hide it
 }
 
-/* post entries, version 2*/
-
 // vertical bar
 #index-main.container {
+  max-width: inherit;
   position: relative;
   box-sizing: border-box;
+  backdrop-filter: blur($blur);
+  box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126), 0 0.9px 1.7px rgba(0, 0, 0, 0.179),
+    0 1.8px 3.5px rgba(0, 0, 0, 0.224), 0 3.7px 7.3px rgba(0, 0, 0, 0.277),
+    0 10px 20px rgba(0, 0, 0, 0.4);
+  width: 950px;
+  padding-left: 115px;
 
   &::before {
     content: '';
@@ -189,7 +109,7 @@ $post-time-space: 1em;
 .post-entry {
   font-size: 16px;
   line-height: 1.5;
-  margin: 1.5em 0;
+  margin-bottom: 1.5em;
   padding: 0 1.5em;
   position: relative;
   display: flex;
@@ -205,7 +125,11 @@ $post-time-space: 1em;
     color: #ccc;
     transition: color 0.2s ease-in-out;
     white-space: nowrap; // chrome needs this
-    top: 50%; // chrome will need this to center vertically
+    top: 0; // chrome will need this to center vertically
+    height: 100%;
+    display: flex;
+    align-items: center;
+
 
     &::before {
       content: '';
@@ -617,4 +541,14 @@ article {
 
 .all-tags::before {
   content: '\f02c';
+}
+
+.post-page-wrapper {
+  width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+  backdrop-filter: blur($blur);
+  box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126), 0 0.9px 1.7px rgba(0, 0, 0, 0.179),
+    0 1.8px 3.5px rgba(0, 0, 0, 0.224), 0 3.7px 7.3px rgba(0, 0, 0, 0.277),
+    0 10px 20px rgba(0, 0, 0, 0.4);
 }
