@@ -103,6 +103,8 @@ ignore:
 theme: very-simple
 
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
+## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:lost-dream/blog.git
+  branch: master
