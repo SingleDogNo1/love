@@ -15,6 +15,7 @@ timezone: ''
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://example.com
 permalink: :abbrlink/
+root: /love
 abbrlink:
   alg: crc32
   rep: hex
@@ -106,5 +107,5 @@ theme: very-simple
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:lost-dream/blog.git
+  repo: git@github.com:lost-dream/love.git
   branch: master
